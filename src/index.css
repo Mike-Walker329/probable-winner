@@ -1,0 +1,97 @@
+:root {
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  --bg: #f8f9fb;
+  --surface: #ffffff;
+  --surface-alt: #f0f2f5;
+  --border: #e2e5eb;
+  --text: #4b5563;
+  --text-strong: #111827;
+  --text-muted: #6b7280;
+
+  --primary: #1d4ed8;
+  --primary-light: #eff6ff;
+  --primary-border: #bfdbfe;
+  --primary-dark: #1e40af;
+
+  --green: #16a34a;
+  --green-bg: #f0fdf4;
+  --green-border: #bbf7d0;
+  --yellow: #d97706;
+  --yellow-bg: #fffbeb;
+  --yellow-border: #fde68a;
+  --red: #dc2626;
+  --red-bg: #fef2f2;
+  --red-border: #fecaca;
+
+  --radius: 10px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+
+  font: 15px/1.6 var(--sans);
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface-alt: #22263a;
+    --border: #2d3149;
+    --text: #9ca3af;
+    --text-strong: #f9fafb;
+    --text-muted: #6b7280;
+
+    --primary: #3b82f6;
+    --primary-light: #1e2a4a;
+    --primary-border: #2d4a8a;
+    --primary-dark: #60a5fa;
+
+    --green-bg: #052e16;
+    --green-border: #14532d;
+    --yellow-bg: #1c1007;
+    --yellow-border: #78350f;
+    --red-bg: #1c0606;
+    --red-border: #7f1d1d;
+
+    --shadow-sm: 0 1px 3px rgba(0,0,0,.3);
+    --shadow-md: 0 4px 12px rgba(0,0,0,.35);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,.5);
+  }
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4, h5 {
+  color: var(--text-strong);
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+p { margin: 0; }
+ul { margin: 0; padding: 0 0 0 1.1rem; }
+li { margin-bottom: 4px; }
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
