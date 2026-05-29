@@ -7,14 +7,14 @@ const COMPLEXITY_SCORE = { Low: 1, Medium: 2, High: 3 };
 export function firstNumber(str) {
   if (typeof str === "number") return str;
   if (!str) return 0;
-  const m = String(str).replace(/,/g, "").match(/-?\d+(\.\d+)?/);
+    const m = String(str).replace(/,/g, "").match(/\d+(\.\d+)?/);
   return m ? parseFloat(m[0]) : 0;
 }
 
 // Average of the first two numbers in a range string, e.g. "200-1,000%" -> 600.
 export function rangeMidpoint(str) {
   if (!str) return 0;
-  const nums = String(str).replace(/,/g, "").match(/-?\d+(\.\d+)?/g);
+    const nums = String(str).replace(/,/g, "").match(/\d+(\.\d+)?/g);
   if (!nums) return 0;
   if (nums.length === 1) return parseFloat(nums[0]);
   return (parseFloat(nums[0]) + parseFloat(nums[1])) / 2;
