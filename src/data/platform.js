@@ -793,6 +793,238 @@ export const platformData = {
           },
         },
       ],
-    }
+    },
+    {
+      id: "PP013",
+      trade: "hvac",
+      title: "Seasonal Demand Spikes Overwhelm Dispatch",
+      description:
+        "When the first heat wave or cold snap hits, call volume triples overnight and dispatch can't triage emergencies from routine tune-ups.",
+      rootCause:
+        "Manual triage and first-come-first-served scheduling. No way to prioritize no-heat/no-cool emergencies or balance technician load.",
+      businessImpact: {
+        leadLoss: "30-40% of peak-day calls go unbooked",
+        revenue: "Emergency jobs average $400-1,500 each",
+        timeWaste: "Dispatchers spend 5-6 hours/day on phones during spikes",
+      },
+      currentTools: ["Phone line", "Paper dispatch board", "Basic scheduling software"],
+      solutions: [
+        {
+          solutionId: "SOL013A",
+          name: "AI Emergency Triage and Dispatch Agent",
+          description:
+            "AI answers and qualifies every call, classifies urgency (no-heat vs. maintenance), and auto-assigns the nearest available tech with the right skills.",
+          aiTechnologies: [
+              "Voice AI (real-time)",
+              "LLM urgency classification",
+              "Geo-routing optimization",
+          ],
+          workflow: {
+            steps: [
+              { node: 1, action: "AI answers call and captures issue", input: "Caller audio, phone number" },
+              { node: 2, action: "LLM classifies urgency and system type", input: "Transcribed issue description" },
+              { node: 3, action: "Match to nearest qualified technician", input: "Tech location, skills, availability" },
+              { node: 4, action: "Book slot and confirm via SMS", input: "Customer phone, assigned slot" },
+              { node: 5, action: "Log to dispatch system", input: "Job details, priority tier" },
+            ],
+            dataFlow: "Call → Voice AI → LLM Triage → Geo-Router → Scheduler → SMS Confirm",
+          },
+          implementationComplexity: "High",
+          timeToValue: "3-5 weeks",
+          roi: {
+            recoveredLeads: "Recover 25% of peak overflow = 30-50 jobs/peak week",
+            jobValue: "$400-1,500 per job",
+            monthlyRevenue: "$12,000-60,000 in peak months",
+            implementationCost: "$2,000-5,000",
+            monthlyROI: "300-1,200%",
+          },
+        },
+        {
+          solutionId: "SOL013B",
+          name: "AI Maintenance Reminder and Tune-Up Engine",
+          description:
+            "Automatically reminds customers of seasonal tune-ups based on equipment age, last service date, and weather forecasts to smooth demand.",
+          aiTechnologies: [
+              "CRM segmentation",
+              "Weather API triggers",
+              "LLM personalization",
+          ],
+          workflow: {
+            steps: [
+              { node: 1, action: "Segment customers by last tune-up date", input: "Service history" },
+              { node: 2, action: "Weather API flags upcoming season change", input: "Forecast data" },
+              { node: 3, action: "LLM drafts personalized reminder", input: "Customer + equipment context" },
+              { node: 4, action: "Send via email/SMS with booking link", input: "Customer contact, offer" },
+              { node: 5, action: "Track bookings and follow up", input: "Response status" },
+            ],
+            dataFlow: "CRM → Weather API → LLM → Email/SMS → Booking → CRM",
+          },
+          implementationComplexity: "Low",
+          timeToValue: "1-2 weeks",
+          roi: {
+            recoveredLeads: "Convert 15% of dormant customers = 20-40 tune-ups/month",
+            jobValue: "$150-350 per tune-up",
+            monthlyRevenue: "$3,000-14,000",
+            implementationCost: "$500-1,500",
+            monthlyROI: "200-900%",
+          },
+        },
+      ],
+    },
+    {
+      id: "PP014",
+      trade: "roofing",
+      title: "Slow, Inaccurate Estimates Lose Bids",
+      description:
+        "Roofing estimates require a site visit and manual measurement, so quotes take days and homeowners go with whoever responds first.",
+      rootCause:
+        "Manual measurement and pricing. No instant aerial estimates. Estimators are a bottleneck during storm season.",
+      businessImpact: {
+        leadLoss: "40-50% of leads choose a faster competitor",
+        revenue: "Roof jobs average $8,000-25,000",
+        timeWaste: "Each estimate takes 2-4 hours plus travel",
+      },
+      currentTools: ["Tape measure / drone", "Spreadsheets", "Manual proposal docs"],
+      solutions: [
+        {
+          solutionId: "SOL014A",
+          name: "AI Aerial Measurement and Instant Quote Engine",
+          description:
+            "Pulls satellite/aerial imagery, auto-measures roof area and pitch, and generates a priced proposal within minutes of a lead coming in.",
+          aiTechnologies: [
+              "Aerial imagery API",
+              "Computer vision measurement",
+              "LLM proposal generation",
+          ],
+          workflow: {
+            steps: [
+              { node: 1, action: "Lead submits address", input: "Property address" },
+              { node: 2, action: "Fetch aerial imagery", input: "Geocoded location" },
+              { node: 3, action: "CV measures area, pitch, facets", input: "Roof imagery" },
+              { node: 4, action: "Apply pricing model by material", input: "Measurements, material choice" },
+              { node: 5, action: "LLM generates branded proposal", input: "Pricing, scope, photos" },
+              { node: 6, action: "Email proposal and schedule call", input: "Customer contact, proposal" },
+            ],
+            dataFlow: "Address → Imagery API → CV Model → Pricing → LLM Proposal → Email",
+          },
+          implementationComplexity: "High",
+          timeToValue: "4-6 weeks",
+          roi: {
+            recoveredLeads: "Win 20% more bids via speed = 4-8 jobs/month",
+            jobValue: "$8,000-25,000 per job",
+            monthlyRevenue: "$32,000-200,000",
+            implementationCost: "$3,000-8,000",
+            monthlyROI: "400-2,000%",
+          },
+        },
+        {
+          solutionId: "SOL014B",
+          name: "AI Storm-Damage Lead Outreach Agent",
+          description:
+            "Monitors storm/hail events by zip code and automatically launches targeted inspection-offer campaigns to affected neighborhoods.",
+          aiTechnologies: [
+              "Weather/hail event API",
+              "Geo-targeting",
+              "LLM campaign generation",
+          ],
+          workflow: {
+            steps: [
+              { node: 1, action: "Storm API detects hail/wind event", input: "Weather event feed" },
+              { node: 2, action: "Map affected zip codes", input: "Event geography" },
+              { node: 3, action: "LLM drafts inspection-offer message", input: "Event severity, area" },
+              { node: 4, action: "Send campaign to prior leads in area", input: "CRM contacts, message" },
+              { node: 5, action: "Book free inspections", input: "Responses" },
+            ],
+            dataFlow: "Storm API → Geo-Map → LLM → Campaign → Bookings",
+          },
+          implementationComplexity: "Medium",
+          timeToValue: "2-3 weeks",
+          roi: {
+            recoveredLeads: "Generate 15-30 inspection leads per storm event",
+            jobValue: "$8,000-25,000 per job",
+            monthlyRevenue: "$20,000-100,000 in storm season",
+            implementationCost: "$1,500-4,000",
+            monthlyROI: "300-1,500%",
+          },
+        },
+      ],
+    },
+    {
+      id: "PP015",
+      trade: "painting",
+      title: "Quote Bottleneck and Color Indecision",
+      description:
+        "Painters lose jobs because quotes require a visit and customers stall for weeks deciding on colors and scope.",
+      rootCause:
+        "No instant quoting from photos. No visualization tools to help customers commit. Follow-up is manual and inconsistent.",
+      businessImpact: {
+        leadLoss: "35% of quoted jobs never close",
+        revenue: "Interior/exterior jobs average $2,000-8,000",
+        timeWaste: "Estimators do 3-5 hours of unbilled visits per week",
+      },
+      currentTools: ["In-person walkthroughs", "Spreadsheets", "Email follow-up"],
+      solutions: [
+        {
+          solutionId: "SOL015A",
+          name: "AI Photo-to-Quote and Color Visualizer",
+          description:
+            "Customer uploads room/exterior photos; AI estimates surface area and generates a quote plus a photorealistic color preview to drive a decision.",
+          aiTechnologies: [
+              "Computer vision area estimate",
+              "Generative image color preview",
+              "LLM quote builder",
+          ],
+          workflow: {
+            steps: [
+              { node: 1, action: "Customer uploads photos and dimensions", input: "Images, room sizes" },
+              { node: 2, action: "CV estimates paintable surface area", input: "Photos" },
+              { node: 3, action: "Generate color preview renders", input: "Photos, selected colors" },
+              { node: 4, action: "Build itemized quote", input: "Area, coats, prep level" },
+              { node: 5, action: "Send quote + previews with e-sign link", input: "Customer contact" },
+            ],
+            dataFlow: "Photos → CV Area → Image Gen → Quote → Email/E-sign",
+          },
+          implementationComplexity: "High",
+          timeToValue: "4-5 weeks",
+          roi: {
+            recoveredLeads: "Close 20% more quotes = 5-10 jobs/month",
+            jobValue: "$2,000-8,000 per job",
+            monthlyRevenue: "$10,000-80,000",
+            implementationCost: "$2,000-6,000",
+            monthlyROI: "250-1,300%",
+          },
+        },
+        {
+          solutionId: "SOL015B",
+          name: "AI Follow-Up and Nurture Sequence",
+          description:
+            "Automatically nurtures undecided leads with timed, personalized check-ins and limited-time offers until they book or opt out.",
+          aiTechnologies: [
+              "LLM message personalization",
+              "CRM automation",
+              "SMS/email delivery",
+          ],
+          workflow: {
+            steps: [
+              { node: 1, action: "Quote sent with no response triggers sequence", input: "Quote status" },
+              { node: 2, action: "LLM drafts contextual follow-up", input: "Quote details, timing" },
+              { node: 3, action: "Send check-in at day 2, 5, 10", input: "Customer contact" },
+              { node: 4, action: "Offer scheduling incentive", input: "Lead engagement" },
+              { node: 5, action: "Hand warm leads to sales", input: "Engagement signals" },
+            ],
+            dataFlow: "Quote → CRM Trigger → LLM → SMS/Email → Sales Handoff",
+          },
+          implementationComplexity: "Low",
+          timeToValue: "1-2 weeks",
+          roi: {
+            recoveredLeads: "Recover 12% of stalled quotes = 4-8 jobs/month",
+            jobValue: "$2,000-8,000 per job",
+            monthlyRevenue: "$8,000-64,000",
+            implementationCost: "$500-1,500",
+            monthlyROI: "300-1,400%",
+          },
+        },
+      ],
+    },
   ],
 };
