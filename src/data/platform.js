@@ -4,7 +4,7 @@ export const platformData = {
     version: "1.0",
     description: "Interactive learning and ideation platform for AI automation in home services",
   },
-  trades: ["plumbing", "electrical", "cleaning", "landscaping"],
+  trades: ["hvac", "plumbing", "electrical", "roofing", "painting", "pest control", "handyman", "flooring", "appliance repair", "garage door", "cleaning", "landscaping"],
   painPoints: [
     {
       id: "PP001",
