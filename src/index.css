@@ -1,0 +1,120 @@
+:root {
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  --bg: #f6f8fc;
+  --surface: #ffffff;
+  --surface-alt: #f0f3f9;
+  --border: #e3e8f0;
+  --text: #475569;
+  --text-strong: #0f172a;
+  --text-muted: #64748b;
+
+  --primary: #2563eb;
+  --primary-light: #eff6ff;
+  --primary-border: #bfdbfe;
+  --primary-dark: #1d4ed8;
+  --accent: #7c3aed;
+
+  --green: #16a34a;
+  --green-bg: #f0fdf4;
+  --green-border: #bbf7d0;
+  --yellow: #d97706;
+  --yellow-bg: #fffbeb;
+  --yellow-border: #fde68a;
+  --red: #dc2626;
+  --red-bg: #fef2f2;
+  --red-border: #fecaca;
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow-sm: 0 1px 3px rgba(15,23,42,.06), 0 1px 2px rgba(15,23,42,.04);
+  --shadow-md: 0 4px 16px rgba(15,23,42,.08), 0 2px 6px rgba(15,23,42,.04);
+  --shadow-lg: 0 16px 48px rgba(15,23,42,.14), 0 6px 12px rgba(15,23,42,.06);
+
+  font: 15px/1.6 var(--sans);
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Explicit dark theme (set by ThemeProvider via data-theme on <html>) */
+[data-theme="dark"] {
+  --bg: #0b0e16;
+  --surface: #161a26;
+  --surface-alt: #1f2535;
+  --border: #2a3142;
+  --text: #9aa5b8;
+  --text-strong: #f8fafc;
+  --text-muted: #6b7689;
+
+  --primary: #3b82f6;
+  --primary-light: #16233f;
+  --primary-border: #2d4a82;
+  --primary-dark: #60a5fa;
+  --accent: #a78bfa;
+
+  --green-bg: #06281a;
+  --green-border: #14532d;
+  --yellow-bg: #221408;
+  --yellow-border: #78350f;
+  --red-bg: #220909;
+  --red-border: #7f1d1d;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.4);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.45);
+  --shadow-lg: 0 16px 48px rgba(0,0,0,.6);
+}
+
+/* Fall back to OS preference only when the user hasn't chosen a theme */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg: #0b0e16;
+    --surface: #161a26;
+    --surface-alt: #1f2535;
+    --border: #2a3142;
+    --text: #9aa5b8;
+    --text-strong: #f8fafc;
+    --text-muted: #6b7689;
+    --primary: #3b82f6;
+    --primary-light: #16233f;
+    --primary-border: #2d4a82;
+    --primary-dark: #60a5fa;
+    --accent: #a78bfa;
+    --green-bg: #06281a;
+    --green-border: #14532d;
+    --yellow-bg: #221408;
+    --yellow-border: #78350f;
+    --red-bg: #220909;
+    --red-border: #7f1d1d;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,.4);
+    --shadow-md: 0 4px 16px rgba(0,0,0,.45);
+    --shadow-lg: 0 16px 48px rgba(0,0,0,.6);
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body { margin: 0; padding: 0; transition: background .25s ease, color .25s ease; }
+
+#root { min-height: 100svh; display: flex; flex-direction: column; }
+
+h1, h2, h3, h4, h5 {
+  color: var(--text-strong);
+  margin: 0;
+  font-weight: 650;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+p { margin: 0; }
+ul { margin: 0; padding: 0 0 0 1.1rem; }
+li { margin-bottom: 4px; }
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+::selection { background: var(--primary); color: #fff; }
