@@ -1257,5 +1257,159 @@ export const platformData = {
         },
       ],
     },
+    {
+      id: "PP019",
+      trade: "appliance repair",
+      title: "Wrong Parts and Repeat Visits",
+      description:
+        "Techs arrive without the right part because the issue wasn't diagnosed up front, forcing second trips that kill productivity.",
+      rootCause:
+        "No pre-visit diagnosis. Parts guessed from vague phone descriptions. No first-visit fix-rate tracking.",
+      businessImpact: {
+        leadLoss: "20% of customers cancel after a failed first visit",
+        revenue: "Repair jobs average $150-450 each",
+        timeWaste: "Return trips cost 1-2 hours + parts logistics per job",
+      },
+      currentTools: ["Phone intake", "Generic parts van stock", "Paper work orders"],
+      solutions: [
+        {
+          solutionId: "SOL019A",
+          name: "AI Pre-Visit Diagnostic and Parts Predictor",
+          description:
+            "Customer describes the fault by text/photo and model number; AI predicts the likely failure and the exact parts the tech should bring.",
+          aiTechnologies: [
+              "LLM diagnostic reasoning",
+              "Computer vision (model/error photos)",
+              "Parts-catalog lookup",
+          ],
+          workflow: {
+            steps: [
+              { node: 1, action: "Customer submits symptoms + model/photo", input: "Description, images, model number" },
+              { node: 2, action: "LLM predicts likely fault", input: "Symptoms, model data" },
+              { node: 3, action: "Map fault to required parts", input: "Diagnosis, parts catalog" },
+              { node: 4, action: "Pre-load parts list to work order", input: "Predicted parts" },
+              { node: 5, action: "Notify tech before dispatch", input: "Work order" },
+            ],
+            dataFlow: "Text/Photo → LLM Diagnosis → Parts Lookup → Work Order → Tech",
+          },
+          implementationComplexity: "Medium",
+          timeToValue: "3-4 weeks",
+          roi: {
+            recoveredLeads: "Lift first-visit fix rate 15-20% = 20-40 saved trips/month",
+            jobValue: "$150-450 per job",
+            monthlyRevenue: "$3,000-18,000 in recovered productivity",
+            implementationCost: "$1,500-4,000",
+            monthlyROI: "200-900%",
+          },
+        },
+        {
+          solutionId: "SOL019B",
+          name: "AI Warranty and Replacement Advisor",
+          description:
+            "Checks warranty status and repair-vs-replace economics, then recommends the best option and upsells extended plans where it makes sense.",
+          aiTechnologies: [
+              "LLM cost analysis",
+              "Warranty database lookup",
+              "Personalized recommendation",
+          ],
+          workflow: {
+            steps: [
+              { node: 1, action: "Capture appliance age and fault", input: "Model, age, diagnosis" },
+              { node: 2, action: "Check warranty status", input: "Model, purchase data" },
+              { node: 3, action: "Compute repair vs. replace economics", input: "Repair cost, unit cost" },
+              { node: 4, action: "LLM recommends best option", input: "Cost analysis" },
+              { node: 5, action: "Present option + plan upsell", input: "Recommendation" },
+            ],
+            dataFlow: "Appliance Data → Warranty DB → Cost Model → LLM → Customer",
+          },
+          implementationComplexity: "Low",
+          timeToValue: "2-3 weeks",
+          roi: {
+            recoveredLeads: "Upsell 12% to plans/replacements = 10-20 deals/month",
+            jobValue: "$200-700 per upsell",
+            monthlyRevenue: "$2,000-14,000",
+            implementationCost: "$1,000-2,500",
+            monthlyROI: "200-1,000%",
+          },
+        },
+      ],
+    },
+    {
+      id: "PP020",
+      trade: "garage door",
+      title: "Emergency Calls and Safety-Liability Pressure",
+      description:
+        "Stuck or broken garage doors are urgent and safety-sensitive, but slow response and unclear pricing send customers elsewhere.",
+      rootCause:
+        "No instant triage of emergency vs. routine. No upfront pricing. Manual scheduling delays urgent same-day jobs.",
+      businessImpact: {
+        leadLoss: "30% of urgent calls lost to faster competitors",
+        revenue: "Repairs/installs average $250-2,500",
+        timeWaste: "Dispatch spends 3-4 hours/day triaging by phone",
+      },
+      currentTools: ["Phone line", "Manual scheduling", "Verbal quotes"],
+      solutions: [
+        {
+          solutionId: "SOL020A",
+          name: "AI Urgent-Triage and Same-Day Booking Agent",
+          description:
+            "AI qualifies the issue, flags safety hazards (broken spring, off-track door), gives upfront pricing, and books same-day slots automatically.",
+          aiTechnologies: [
+              "Voice/chat AI",
+              "LLM safety triage",
+              "Automated scheduling",
+          ],
+          workflow: {
+            steps: [
+              { node: 1, action: "AI captures the door issue", input: "Caller description/photo" },
+              { node: 2, action: "LLM flags safety hazard + urgency", input: "Issue details" },
+              { node: 3, action: "Quote upfront price range", input: "Issue type, parts" },
+              { node: 4, action: "Book same-day or next slot", input: "Availability" },
+              { node: 5, action: "Confirm and brief the tech", input: "Job details" },
+            ],
+            dataFlow: "Call/Chat → LLM Triage → Pricing → Scheduler → Tech Brief",
+          },
+          implementationComplexity: "Medium",
+          timeToValue: "2-4 weeks",
+          roi: {
+            recoveredLeads: "Recover 22% of urgent calls = 15-30 jobs/month",
+            jobValue: "$250-2,500 per job",
+            monthlyRevenue: "$6,000-60,000",
+            implementationCost: "$1,500-4,000",
+            monthlyROI: "250-1,300%",
+          },
+        },
+        {
+          solutionId: "SOL020B",
+          name: "AI Maintenance and Safety-Check Reminder Engine",
+          description:
+            "Tracks installs and reminds customers of annual safety inspections and tune-ups, generating recurring revenue and reducing liability.",
+          aiTechnologies: [
+              "CRM segmentation",
+              "Time-based triggers",
+              "LLM personalization",
+          ],
+          workflow: {
+            steps: [
+              { node: 1, action: "Tag installs with service interval", input: "Install date, door type" },
+              { node: 2, action: "Trigger annual safety reminder", input: "Schedule" },
+              { node: 3, action: "LLM drafts reminder + offer", input: "Customer history" },
+              { node: 4, action: "Send with booking link", input: "Customer contact" },
+              { node: 5, action: "Track booked inspections", input: "Response" },
+            ],
+            dataFlow: "CRM → Trigger → LLM → SMS/Email → Booking",
+          },
+          implementationComplexity: "Low",
+          timeToValue: "1-2 weeks",
+          roi: {
+            recoveredLeads: "Rebook 15% for tune-ups = 15-30 jobs/month",
+            jobValue: "$120-350 per inspection",
+            monthlyRevenue: "$2,000-10,000",
+            implementationCost: "$500-1,500",
+            monthlyROI: "200-1,000%",
+          },
+        },
+      ],
+    },
   ],
 };
