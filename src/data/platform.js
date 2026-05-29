@@ -1026,5 +1026,236 @@ export const platformData = {
         },
       ],
     },
+    {
+      id: "PP016",
+      trade: "pest control",
+      title: "Reactive Service and Recurring-Plan Churn",
+      description:
+        "Pest control is sold one-off when customers panic, then they cancel recurring plans, leaving revenue unpredictable.",
+      rootCause:
+        "No proactive seasonal targeting. No automated renewal/retention. No upsell from one-time to recurring plans.",
+      businessImpact: {
+        churn: "50-60% of one-time customers never convert to a plan",
+        revenue: "Recurring plans worth $400-1,200/year each",
+        timeWaste: "Manual renewal calls take 4-6 hours/week",
+      },
+      currentTools: ["Phone", "Spreadsheets", "Manual renewal reminders"],
+      solutions: [
+        {
+          solutionId: "SOL016A",
+          name: "AI Seasonal Pest-Pressure Campaign Engine",
+          description:
+            "Triggers targeted outreach when local pest activity rises (mosquito season, rodent fall migration) to convert one-time customers into plans.",
+          aiTechnologies: [
+              "Pest/weather data triggers",
+              "CRM segmentation",
+              "LLM personalization",
+          ],
+          workflow: {
+            steps: [
+              { node: 1, action: "Detect seasonal pest-pressure trigger", input: "Weather/pest data" },
+              { node: 2, action: "Segment customers by service history", input: "CRM data" },
+              { node: 3, action: "LLM drafts plan-conversion offer", input: "Customer history, season" },
+              { node: 4, action: "Send email/SMS with sign-up link", input: "Customer contact" },
+              { node: 5, action: "Track conversions to recurring plan", input: "Sign-up status" },
+            ],
+            dataFlow: "Pest Data → CRM → LLM → SMS/Email → Plan Sign-up",
+          },
+          implementationComplexity: "Medium",
+          timeToValue: "2-3 weeks",
+          roi: {
+            recoveredLeads: "Convert 18% of one-time customers = 15-30 plans/month",
+            jobValue: "$400-1,200 per plan annually",
+            monthlyRevenue: "$6,000-36,000 in recurring value",
+            implementationCost: "$1,000-3,000",
+            monthlyROI: "200-1,000%",
+          },
+        },
+        {
+          solutionId: "SOL016B",
+          name: "AI Renewal and Retention Agent",
+          description:
+            "Predicts at-risk recurring accounts and automatically sends retention offers and reschedules lapsed visits before churn.",
+          aiTechnologies: [
+              "Churn-prediction model",
+              "LLM retention messaging",
+              "Automated scheduling",
+          ],
+          workflow: {
+            steps: [
+              { node: 1, action: "Model flags at-risk accounts", input: "Payment + visit history" },
+              { node: 2, action: "LLM drafts retention offer", input: "Account context" },
+              { node: 3, action: "Send offer and reschedule link", input: "Customer contact" },
+              { node: 4, action: "Auto-book recovered visits", input: "Availability" },
+              { node: 5, action: "Escalate persistent churn risk to staff", input: "Engagement signals" },
+            ],
+            dataFlow: "Model → LLM → SMS/Email → Scheduler → Staff Escalation",
+          },
+          implementationComplexity: "Medium",
+          timeToValue: "3-4 weeks",
+          roi: {
+            recoveredLeads: "Retain 20% of at-risk accounts = 10-20 saved plans/month",
+            jobValue: "$400-1,200 per plan annually",
+            monthlyRevenue: "$4,000-24,000 retained",
+            implementationCost: "$1,500-4,000",
+            monthlyROI: "150-700%",
+          },
+        },
+      ],
+    },
+    {
+      id: "PP017",
+      trade: "handyman",
+      title: "Tiny Jobs, High Admin Overhead",
+      description:
+        "Handyman work is many small jobs, and the time spent quoting, scheduling, and invoicing each one eats the margin.",
+      rootCause:
+        "No automated intake or quoting for small varied jobs. Manual scheduling and invoicing per task.",
+      businessImpact: {
+        leadLoss: "25% of inquiries never get a quote in time",
+        revenue: "Jobs average $150-600 each",
+        timeWaste: "Admin overhead is 30-40% of each small job",
+      },
+      currentTools: ["Text messages", "Notebook scheduling", "Manual invoices"],
+      solutions: [
+        {
+          solutionId: "SOL017A",
+          name: "AI Intake, Quote, and Booking Assistant",
+          description:
+            "Customers describe the job by text or photo; AI scopes it, gives a price range, books a slot, and creates the invoice automatically.",
+          aiTechnologies: [
+              "LLM job scoping",
+              "Computer vision (photos)",
+              "Automated scheduling + invoicing",
+          ],
+          workflow: {
+            steps: [
+              { node: 1, action: "Customer texts job description/photo", input: "Message, images" },
+              { node: 2, action: "LLM scopes task and time estimate", input: "Description, photos" },
+              { node: 3, action: "Generate price range and slot options", input: "Scope, availability" },
+              { node: 4, action: "Customer confirms booking", input: "Selected slot" },
+              { node: 5, action: "Auto-create invoice draft", input: "Job scope, price" },
+            ],
+            dataFlow: "Text/Photo → LLM Scope → Pricing → Scheduler → Invoice",
+          },
+          implementationComplexity: "Medium",
+          timeToValue: "2-3 weeks",
+          roi: {
+            recoveredLeads: "Capture 20% more small jobs = 30-60 jobs/month",
+            jobValue: "$150-600 per job",
+            monthlyRevenue: "$4,500-36,000",
+            implementationCost: "$1,000-3,000",
+            monthlyROI: "200-1,100%",
+          },
+        },
+        {
+          solutionId: "SOL017B",
+          name: "AI Recurring-Task Reminder Engine",
+          description:
+            "Tracks seasonal/recurring home maintenance (gutter cleaning, caulking, filter swaps) and nudges past customers to rebook.",
+          aiTechnologies: [
+              "CRM segmentation",
+              "Seasonal triggers",
+              "LLM personalization",
+          ],
+          workflow: {
+            steps: [
+              { node: 1, action: "Tag jobs with recurring cadence", input: "Job type, date" },
+              { node: 2, action: "Trigger reminder at next interval", input: "Cadence schedule" },
+              { node: 3, action: "LLM drafts rebooking nudge", input: "Job history" },
+              { node: 4, action: "Send with one-tap booking", input: "Customer contact" },
+              { node: 5, action: "Log rebookings", input: "Response" },
+            ],
+            dataFlow: "CRM → Trigger → LLM → SMS/Email → Rebooking",
+          },
+          implementationComplexity: "Low",
+          timeToValue: "1-2 weeks",
+          roi: {
+            recoveredLeads: "Rebook 15% of past customers = 20-40 jobs/month",
+            jobValue: "$150-600 per job",
+            monthlyRevenue: "$3,000-24,000",
+            implementationCost: "$500-1,500",
+            monthlyROI: "250-1,200%",
+          },
+        },
+      ],
+    },
+    {
+      id: "PP018",
+      trade: "flooring",
+      title: "Measurement Errors and Material Waste",
+      description:
+        "Inaccurate measurements cause material over/under-ordering and slow quotes, hurting margins and customer trust.",
+      rootCause:
+        "Manual measuring and quoting. No instant material estimates. No visualization to close the sale.",
+      businessImpact: {
+        leadLoss: "30% of quotes lost to slow turnaround",
+        revenue: "Flooring jobs average $3,000-12,000",
+        timeWaste: "Each measure-and-quote takes 2-3 hours plus travel",
+      },
+      currentTools: ["Tape measure", "Spreadsheets", "Sample books"],
+      solutions: [
+        {
+          solutionId: "SOL018A",
+          name: "AI Room-Scan Measurement and Quote Engine",
+          description:
+            "Customer scans rooms with their phone; AI calculates square footage, adds waste factor, and produces a priced quote with material options.",
+          aiTechnologies: [
+              "LiDAR/AR room scan",
+              "Computer vision area calc",
+              "LLM quote builder",
+          ],
+          workflow: {
+            steps: [
+              { node: 1, action: "Customer scans rooms via phone AR", input: "Room scan data" },
+              { node: 2, action: "CV computes area + waste factor", input: "Scan geometry" },
+              { node: 3, action: "Apply pricing per material", input: "Area, material choice" },
+              { node: 4, action: "Generate quote with options", input: "Pricing, scope" },
+              { node: 5, action: "Send quote with visualizer link", input: "Customer contact" },
+            ],
+            dataFlow: "AR Scan → CV Area → Pricing → Quote → Email",
+          },
+          implementationComplexity: "High",
+          timeToValue: "4-6 weeks",
+          roi: {
+            recoveredLeads: "Close 18% more quotes = 5-9 jobs/month",
+            jobValue: "$3,000-12,000 per job",
+            monthlyRevenue: "$15,000-108,000",
+            implementationCost: "$2,500-7,000",
+            monthlyROI: "300-1,500%",
+          },
+        },
+        {
+          solutionId: "SOL018B",
+          name: "AI Material-Order Optimizer",
+          description:
+            "Calculates exact material and waste per job and auto-drafts supplier orders to cut over-ordering and stockouts.",
+          aiTechnologies: [
+              "Optimization model",
+              "Supplier API integration",
+              "LLM order drafting",
+          ],
+          workflow: {
+            steps: [
+              { node: 1, action: "Pull job measurements", input: "Quote data" },
+              { node: 2, action: "Optimize order quantity + waste buffer", input: "Area, material specs" },
+              { node: 3, action: "Check supplier stock/pricing", input: "Supplier API" },
+              { node: 4, action: "Draft purchase order", input: "Optimized quantities" },
+              { node: 5, action: "Send to manager for approval", input: "PO draft" },
+            ],
+            dataFlow: "Job Data → Optimizer → Supplier API → PO Draft → Approval",
+          },
+          implementationComplexity: "Medium",
+          timeToValue: "3-4 weeks",
+          roi: {
+            recoveredLeads: "Cut material waste 10-15% across all jobs",
+            jobValue: "$200-800 saved per job",
+            monthlyRevenue: "$2,000-12,000 in saved costs",
+            implementationCost: "$1,500-4,000",
+            monthlyROI: "150-700%",
+          },
+        },
+      ],
+    },
   ],
 };
