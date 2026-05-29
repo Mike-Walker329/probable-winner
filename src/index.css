@@ -2,18 +2,19 @@
   --sans: system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
-  --bg: #f8f9fb;
+  --bg: #f6f8fc;
   --surface: #ffffff;
-  --surface-alt: #f0f2f5;
-  --border: #e2e5eb;
-  --text: #4b5563;
-  --text-strong: #111827;
-  --text-muted: #6b7280;
+  --surface-alt: #f0f3f9;
+  --border: #e3e8f0;
+  --text: #475569;
+  --text-strong: #0f172a;
+  --text-muted: #64748b;
 
-  --primary: #1d4ed8;
+  --primary: #2563eb;
   --primary-light: #eff6ff;
   --primary-border: #bfdbfe;
-  --primary-dark: #1e40af;
+  --primary-dark: #1d4ed8;
+  --accent: #7c3aed;
 
   --green: #16a34a;
   --green-bg: #f0fdf4;
@@ -25,10 +26,11 @@
   --red-bg: #fef2f2;
   --red-border: #fecaca;
 
-  --radius: 10px;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.05);
-  --shadow-md: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
-  --shadow-lg: 0 12px 40px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow-sm: 0 1px 3px rgba(15,23,42,.06), 0 1px 2px rgba(15,23,42,.04);
+  --shadow-md: 0 4px 16px rgba(15,23,42,.08), 0 2px 6px rgba(15,23,42,.04);
+  --shadow-lg: 0 16px 48px rgba(15,23,42,.14), 0 6px 12px rgba(15,23,42,.06);
 
   font: 15px/1.6 var(--sans);
   color: var(--text);
@@ -36,54 +38,73 @@
   -webkit-font-smoothing: antialiased;
 }
 
+/* Explicit dark theme (set by ThemeProvider via data-theme on <html>) */
+[data-theme="dark"] {
+  --bg: #0b0e16;
+  --surface: #161a26;
+  --surface-alt: #1f2535;
+  --border: #2a3142;
+  --text: #9aa5b8;
+  --text-strong: #f8fafc;
+  --text-muted: #6b7689;
+
+  --primary: #3b82f6;
+  --primary-light: #16233f;
+  --primary-border: #2d4a82;
+  --primary-dark: #60a5fa;
+  --accent: #a78bfa;
+
+  --green-bg: #06281a;
+  --green-border: #14532d;
+  --yellow-bg: #221408;
+  --yellow-border: #78350f;
+  --red-bg: #220909;
+  --red-border: #7f1d1d;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.4);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.45);
+  --shadow-lg: 0 16px 48px rgba(0,0,0,.6);
+}
+
+/* Fall back to OS preference only when the user hasn't chosen a theme */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0f1117;
-    --surface: #1a1d27;
-    --surface-alt: #22263a;
-    --border: #2d3149;
-    --text: #9ca3af;
-    --text-strong: #f9fafb;
-    --text-muted: #6b7280;
-
+  :root:not([data-theme]) {
+    --bg: #0b0e16;
+    --surface: #161a26;
+    --surface-alt: #1f2535;
+    --border: #2a3142;
+    --text: #9aa5b8;
+    --text-strong: #f8fafc;
+    --text-muted: #6b7689;
     --primary: #3b82f6;
-    --primary-light: #1e2a4a;
-    --primary-border: #2d4a8a;
+    --primary-light: #16233f;
+    --primary-border: #2d4a82;
     --primary-dark: #60a5fa;
-
-    --green-bg: #052e16;
+    --accent: #a78bfa;
+    --green-bg: #06281a;
     --green-border: #14532d;
-    --yellow-bg: #1c1007;
+    --yellow-bg: #221408;
     --yellow-border: #78350f;
-    --red-bg: #1c0606;
+    --red-bg: #220909;
     --red-border: #7f1d1d;
-
-    --shadow-sm: 0 1px 3px rgba(0,0,0,.3);
-    --shadow-md: 0 4px 12px rgba(0,0,0,.35);
-    --shadow-lg: 0 12px 40px rgba(0,0,0,.5);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,.4);
+    --shadow-md: 0 4px 16px rgba(0,0,0,.45);
+    --shadow-lg: 0 16px 48px rgba(0,0,0,.6);
   }
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
-}
+*, *::before, *::after { box-sizing: border-box; }
 
-body {
-  margin: 0;
-  padding: 0;
-}
+body { margin: 0; padding: 0; transition: background .25s ease, color .25s ease; }
 
-#root {
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-}
+#root { min-height: 100svh; display: flex; flex-direction: column; }
 
 h1, h2, h3, h4, h5 {
   color: var(--text-strong);
   margin: 0;
-  font-weight: 600;
+  font-weight: 650;
   line-height: 1.25;
+  letter-spacing: -0.01em;
 }
 
 p { margin: 0; }
@@ -95,3 +116,5 @@ button {
   border: none;
   font-family: inherit;
 }
+
+::selection { background: var(--primary); color: #fff; }
