@@ -517,6 +517,282 @@ export const platformData = {
           },
         },
       ],
+    },,
+    {
+      id: "PP007",
+      trade: "electrical",
+      title: "Quoting Delays on Complex Jobs",
+      description:
+        "Electrical estimates require load calculations and material lookups. Quotes take days, and customers book faster competitors.",
+      rootCause:
+        "Manual takeoffs and pricing. Estimators juggle spec sheets, supplier pricing, and code references by hand.",
+      businessImpact: {
+        leadLoss: "30-40% of estimates never get sent within 48 hours",
+        revenue: "Average job value $1,500-8,000",
+        timeWaste: "2-5 hours per detailed quote",
+      },
+      currentTools: ["Spreadsheets", "Supplier PDF catalogs", "Email"],
+      solutions: [
+        {
+          solutionId: "SOL007A",
+          name: "AI Estimate Drafting Assistant",
+          description:
+            "AI reads job notes and photos, drafts a line-item estimate with materials and labor, ready for review in minutes.",
+          aiTechnologies: ["Vision model (GPT-4o)", "RAG over pricing catalog", "LLM drafting (Claude)"],
+          workflow: {
+            steps: [
+              { node: 1, action: "Tech uploads job photos and notes", input: "Images, voice notes" },
+              { node: 2, action: "Vision model identifies panels, runs, fixtures", input: "Images" },
+              { node: 3, action: "Retrieve current material pricing", input: "Identified components" },
+              { node: 4, action: "LLM drafts line-item estimate", input: "Components, pricing, labor rates" },
+              { node: 5, action: "Estimator reviews and sends", input: "Draft estimate" },
+            ],
+            dataFlow: "Photos -> Vision -> Pricing RAG -> Claude Draft -> Estimator Review -> Customer",
+          },
+          implementationComplexity: "High",
+          timeToValue: "3-5 weeks",
+          roi: {
+            recoveredLeads: "Send 90% of quotes same-day vs 60%",
+            jobValue: "$1,500-8,000 per job",
+            monthlyRevenue: "$8,000-30,000",
+            implementationCost: "$2,000-5,000",
+            monthlyROI: "150-600%",
+          },
+        },
+        {
+          solutionId: "SOL007B",
+          name: "Code Reference Chatbot",
+          description:
+            "Field techs ask plain-English NEC code questions and get cited answers instantly instead of calling the office.",
+          aiTechnologies: ["RAG over NEC handbook", "LLM (Claude)", "Mobile chat UI"],
+          workflow: {
+            steps: [
+              { node: 1, action: "Tech asks a code question", input: "Natural language question" },
+              { node: 2, action: "Retrieve relevant code sections", input: "Question embedding" },
+              { node: 3, action: "LLM answers with citations", input: "Retrieved sections" },
+            ],
+            dataFlow: "Question -> Retrieval -> Claude -> Cited Answer",
+          },
+          implementationComplexity: "Medium",
+          timeToValue: "2-3 weeks",
+          roi: {
+            recoveredLeads: "Save 30-45 min per code lookup",
+            jobValue: "Fewer callbacks and rework",
+            monthlyRevenue: "$2,000-6,000 in saved labor",
+            implementationCost: "$1,000-2,500",
+            monthlyROI: "100-400%",
+          },
+        },
+      ],
     },
+    {
+      id: "PP008",
+      trade: "electrical",
+      title: "Unscheduled Emergency Triage",
+      description:
+        "Emergency calls (outages, sparking panels) mix with routine work, and dispatchers struggle to prioritize safely.",
+      rootCause:
+        "No structured triage. Urgency is judged ad hoc, so true emergencies wait while routine jobs get slots.",
+      businessImpact: {
+        leadLoss: "High-value emergency jobs lost to faster responders",
+        revenue: "Emergency jobs bill 1.5-2x standard rate",
+        timeWaste: "Dispatcher spends 1-2 hours/day re-sorting",
+      },
+      currentTools: ["Phone notes", "Whiteboard", "Calendar"],
+      solutions: [
+        {
+          solutionId: "SOL008A",
+          name: "AI Urgency Triage Router",
+          description:
+            "AI scores each incoming request for safety urgency and auto-routes emergencies to the nearest available tech.",
+          aiTechnologies: ["LLM classification (Claude)", "Geo-routing", "SMS/push alerts (Twilio)"],
+          workflow: {
+            steps: [
+              { node: 1, action: "Capture incoming request", input: "Call or web form text" },
+              { node: 2, action: "LLM scores safety urgency 1-5", input: "Request description" },
+              { node: 3, action: "Match nearest available tech", input: "Urgency, location, skills" },
+              { node: 4, action: "Alert tech and confirm ETA", input: "Assignment, customer contact" },
+            ],
+            dataFlow: "Request -> Claude Triage -> Geo-match -> Twilio Alert -> Confirmed ETA",
+          },
+          implementationComplexity: "Medium",
+          timeToValue: "2-4 weeks",
+          roi: {
+            recoveredLeads: "Capture 25% more emergency jobs",
+            jobValue: "$800-3,000 per emergency",
+            monthlyRevenue: "$6,000-20,000",
+            implementationCost: "$1,500-3,500",
+            monthlyROI: "150-700%",
+          },
+        },
+      ],
+    },
+    {
+      id: "PP009",
+      trade: "cleaning",
+      title: "Recurring Booking Churn",
+      description:
+        "Recurring cleaning clients cancel quietly. Without early signals, the business loses steady revenue before noticing.",
+      rootCause:
+        "No churn-risk monitoring. Reschedules, complaints, and skipped visits are not tracked as warning signs.",
+      businessImpact: {
+        leadLoss: "10-20% annual churn on recurring contracts",
+        revenue: "Each recurring client worth $1,800-6,000/year",
+        timeWaste: "Reactive win-back is expensive and slow",
+      },
+      currentTools: ["Booking app", "Spreadsheet", "Email reminders"],
+      solutions: [
+        {
+          solutionId: "SOL009A",
+          name: "AI Churn-Risk Early Warning",
+          description:
+            "AI watches reschedule patterns and feedback to flag at-risk recurring clients and suggests a retention offer.",
+          aiTechnologies: ["Predictive scoring", "LLM feedback analysis (Claude)", "Automated outreach"],
+          workflow: {
+            steps: [
+              { node: 1, action: "Ingest booking and feedback history", input: "Visit logs, reviews" },
+              { node: 2, action: "Score churn risk per client", input: "Behavior signals" },
+              { node: 3, action: "LLM drafts personalized retention offer", input: "Client history, risk score" },
+              { node: 4, action: "Send offer and log outcome", input: "Offer, client contact" },
+            ],
+            dataFlow: "History -> Risk Scoring -> Claude Offer -> Outreach -> Outcome Log",
+          },
+          implementationComplexity: "Medium",
+          timeToValue: "3-4 weeks",
+          roi: {
+            recoveredLeads: "Retain 30-50% of at-risk clients",
+            jobValue: "$1,800-6,000 annual value",
+            monthlyRecurring: "$3,000-10,000 MRR protected",
+            implementationCost: "$1,500-3,000",
+            monthlyROI: "120-500%",
+          },
+        },
+      ],
+    },
+    {
+      id: "PP010",
+      trade: "cleaning",
+      title: "Inefficient Crew Assignment",
+      description:
+        "Crews are assigned by habit, not by skill or location, causing wasted drive time and uneven quality.",
+      rootCause:
+        "Manual scheduling ignores crew skills, client preferences, and travel distance.",
+      businessImpact: {
+        leadLoss: "Lost capacity for 2-4 extra jobs/week",
+        revenue: "Drive time eats 15-25% of paid hours",
+        timeWaste: "Manager spends 5+ hours/week scheduling",
+      },
+      currentTools: ["Paper schedule", "Group chat", "Calendar"],
+      solutions: [
+        {
+          solutionId: "SOL010A",
+          name: "AI Crew Optimizer",
+          description:
+            "AI builds the daily schedule by matching crew skills and minimizing drive time across all jobs.",
+          aiTechnologies: ["Route optimization", "Constraint solver", "LLM preference parsing"],
+          workflow: {
+            steps: [
+              { node: 1, action: "Import jobs and crew availability", input: "Jobs, crews, skills" },
+              { node: 2, action: "Optimize assignments and routes", input: "Locations, constraints" },
+              { node: 3, action: "Publish schedule to crews", input: "Optimized plan" },
+            ],
+            dataFlow: "Jobs+Crews -> Optimizer -> Published Schedule",
+          },
+          implementationComplexity: "Medium",
+          timeToValue: "2-4 weeks",
+          roi: {
+            recoveredLeads: "Add 2-4 jobs/week of capacity",
+            jobValue: "$120-300 per cleaning",
+            monthlyRevenue: "$2,500-9,000",
+            implementationCost: "$1,200-3,000",
+            monthlyROI: "120-450%",
+          },
+        },
+      ],
+    },
+    {
+      id: "PP011",
+      trade: "landscaping",
+      title: "Weather-Driven Reschedule Chaos",
+      description:
+        "Rain forces last-minute reschedules, and manually reshuffling crews and notifying clients eats the whole morning.",
+      rootCause:
+        "No automated weather-aware rescheduling. Every storm triggers manual phone and text scrambling.",
+      businessImpact: {
+        leadLoss: "Client frustration and cancellations",
+        revenue: "Lost billable days during weather windows",
+        timeWaste: "3-4 hours of reshuffling per weather event",
+      },
+      currentTools: ["Weather app", "Phone", "Paper route sheets"],
+      solutions: [
+        {
+          solutionId: "SOL011A",
+          name: "AI Weather-Aware Rescheduler",
+          description:
+            "AI monitors forecasts, auto-reschedules affected jobs to the next clear slot, and notifies clients and crews.",
+          aiTechnologies: ["Weather API", "Optimization", "Automated SMS (Twilio)"],
+          workflow: {
+            steps: [
+              { node: 1, action: "Monitor forecast for service areas", input: "Forecast data" },
+              { node: 2, action: "Identify affected jobs", input: "Schedule, weather thresholds" },
+              { node: 3, action: "Propose new slots and rebook", input: "Open capacity" },
+              { node: 4, action: "Notify clients and crews", input: "Updated schedule" },
+            ],
+            dataFlow: "Forecast -> Affected Jobs -> Reschedule -> Twilio Notify",
+          },
+          implementationComplexity: "Medium",
+          timeToValue: "2-3 weeks",
+          roi: {
+            recoveredLeads: "Recover 80% of weather-lost days",
+            jobValue: "$150-600 per visit",
+            monthlyRevenue: "$3,000-12,000",
+            implementationCost: "$1,200-3,000",
+            monthlyROI: "130-500%",
+          },
+        },
+      ],
+    },
+    {
+      id: "PP012",
+      trade: "landscaping",
+      title: "Seasonal Upsell Gaps",
+      description:
+        "Crews finish mowing without flagging obvious add-on work (mulch, trimming, cleanups), leaving easy revenue on the table.",
+      rootCause:
+        "No structured upsell prompts. Add-on opportunities depend on whether a crew member happens to mention them.",
+      businessImpact: {
+        leadLoss: "Most properties never get an add-on offer",
+        revenue: "Add-ons average $200-800 each",
+        timeWaste: "Manual follow-up rarely happens",
+      },
+      currentTools: ["Memory", "Occasional photos", "Verbal mentions"],
+      solutions: [
+        {
+          solutionId: "SOL012A",
+          name: "AI Property Upsell Spotter",
+          description:
+            "AI reviews crew site photos, spots add-on opportunities, and drafts a tailored upsell offer for the client.",
+          aiTechnologies: ["Vision model (GPT-4o)", "LLM offer drafting (Claude)", "Automated email/SMS"],
+          workflow: {
+            steps: [
+              { node: 1, action: "Crew uploads site photos", input: "Property images" },
+              { node: 2, action: "Vision model spots opportunities", input: "Images" },
+              { node: 3, action: "LLM drafts tailored offer", input: "Opportunities, client history" },
+              { node: 4, action: "Send offer and track response", input: "Offer, client contact" },
+            ],
+            dataFlow: "Photos -> Vision -> Claude Offer -> Outreach -> Tracking",
+          },
+          implementationComplexity: "Medium",
+          timeToValue: "2-4 weeks",
+          roi: {
+            recoveredLeads: "Offer add-ons on 100% of visits",
+            jobValue: "$200-800 per add-on",
+            monthlyRevenue: "$2,000-8,000",
+            implementationCost: "$1,200-2,800",
+            monthlyROI: "120-450%",
+          },
+        },
+      ],
+    }
   ],
 };
